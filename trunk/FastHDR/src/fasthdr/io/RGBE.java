@@ -131,7 +131,7 @@ public class RGBE implements FileFormatInterface {
 		    // read rle header
 		    byte header[] = new byte[4];
 		    fis.read(header, 0, 4);
-		    if(header[0] != 2 || header[1] != 2 || (header[2] <<8 ) + header[3] != width) {
+		    if(javaSignedByteToInt(header[0]) != 2 || javaSignedByteToInt(header[1]) != 2 || (javaSignedByteToInt(header[2]) <<8 ) + javaSignedByteToInt(header[3]) != width) {
 		    	//--- simple scanline (not rle)
 		    	int byteCount = fis.read(scanline, 4, (4 * width) - 4);
 		    	if(byteCount != (4 * width) - 4){
